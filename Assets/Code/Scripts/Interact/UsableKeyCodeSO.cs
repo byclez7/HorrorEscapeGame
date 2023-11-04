@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HorrorEscapeGame
 {
-    [CreateAssetMenu(menuName = "GameRule/Keys")]
+    [CreateAssetMenu(menuName = "HorrorEscapeGame/GameRule/Keys")]
     public class UsableKeyCodeSO : ScriptableObject
     {
         public KeyCode data;
