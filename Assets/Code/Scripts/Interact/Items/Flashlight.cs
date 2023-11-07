@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HorrorEscapeGame
 {
-    public class Flashlight : InteractableThing
+    public class Flashlight : InteractableWorldItem
     {
         public Light light;
 

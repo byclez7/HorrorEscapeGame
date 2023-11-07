@@ -7,8 +7,8 @@ namespace HorrorEscapeGame
 {
     public interface IState
     {
-        void OnEnter(BehaviourRoutine routine);
-        void OnUpdate(BehaviourRoutine routine);
-        void OnExit(BehaviourRoutine routine);
+        void OnEnter(GameUnitBase unit);
+        void OnUpdate(GameUnitBase unit);
+        void OnExit(GameUnitBase unit);
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace HorrorEscapeGame
 {
-    public abstract class InteractableThing : MonoBehaviour
+    public interface IInteractableThing
     {
-        public UsableKeyCodeSO usableKey;
+        public UsableKeyCodeSO usableKey { get; }
         public abstract void Use();
     }
 }

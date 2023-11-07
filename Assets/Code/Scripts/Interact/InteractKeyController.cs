@@ -2,23 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace HorrorEscapeGame
 {
-    public class InteractController : MonoBehaviour
+    [CreateAssetMenu(menuName = "HorrorEscapeGame/GameRule/KeyController")]
+    public class InteractKeyController : ScriptableObject
     {
-        public List<InteractableThing> startItems;
+        private IInteractableThing currentUsing;
+        private readonly List<IInteractableThing> allItems = new();
 
-        private InteractableThing currentUsing;
-        private readonly List<InteractableThing> allItems = new();
-
-        void Start()
+        public void Initiate<T>(List<T> initialValues = null) where T : IInteractableThing
         {
-            allItems.AddRange(startItems);
+            allItems.AddRange((IEnumerable<IInteractableThing>)(initialValues ?? new()));
         }
 
-        void Update()
+        public void AddInteractableItem<T>(T item) where T : IInteractableThing
+        {
+            allItems.Add(item);
+        }
+
+        public void UpdateKeyInputEvent()
         {
             if (Input.inputString.Length > 0)
                 InteractWithPressedKey();

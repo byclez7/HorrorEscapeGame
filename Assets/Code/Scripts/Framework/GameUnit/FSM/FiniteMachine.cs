@@ -5,23 +5,24 @@ using UnityEngine;
 
 namespace HorrorEscapeGame
 {
-    [RequireComponent(typeof(BehaviourRoutine))]
     public class FiniteMachine : MonoBehaviour
     {
-        private IState current;
-        private BehaviourRoutine enemyBase;
+        public GameUnitBase Unit { get; set; }
 
-        void Start()
-        {
-            enemyBase = GetComponent<BehaviourRoutine>();
-        }
+        private IState current;
 
         void Update()
         {
             if (current == null)
                 return;
 
-            current.OnUpdate(enemyBase);
+            current.OnUpdate(Unit);
+        }
+
+        public void SetState(IState state)
+        {
+            current = state;
+            current.OnEnter(Unit);
         }
 
         public void ChangeState(IState state)
@@ -31,8 +32,8 @@ namespace HorrorEscapeGame
 
             var prev = current;
             current = state;
-            current.OnEnter(enemyBase);
-            prev.OnExit(enemyBase);
+            current.OnEnter(Unit);
+            prev.OnExit(Unit);
         }
     }
 }
