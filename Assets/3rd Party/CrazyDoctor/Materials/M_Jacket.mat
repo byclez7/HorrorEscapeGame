@@ -22,8 +22,6 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Jacket
   m_Shader: {fileID: 4800000, guid: 0e9d5a909a1f7e84882a534d0d11e49f, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _DETAILSOURCE_SPECULARALPHA
@@ -40,7 +38,6 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -143,7 +140,7 @@ Material:
     - _InvertCutout: 0
     - _InvertMask: 0
     - _InvertTransparent: 0
-    - _Metallic: 0
+    - _Metallic: 0.78
     - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
