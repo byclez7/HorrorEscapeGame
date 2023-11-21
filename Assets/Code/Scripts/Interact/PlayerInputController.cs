@@ -24,6 +24,11 @@ namespace HorrorEscapeGame
         {
             Debug.Log(word);
         }
+
+        public void AddKey(InteractableWorldItem worldItem)
+        {
+            playerKeyController.AddInteractableItem(worldItem);
+        }
     }
 
     [System.Serializable]

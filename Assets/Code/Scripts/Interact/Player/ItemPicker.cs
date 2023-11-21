@@ -19,7 +19,7 @@ namespace HorrorEscapeGame
             ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
             if (Physics.Raycast(ray, out hitInfo, 10f, pickLayer.value))
             {
-                if (hitInfo.collider.TryGetComponent(out IInteractableThing item))
+                if (hitInfo.collider.TryGetComponent(out WorldItem item))
                 {
                     bag.AddItem(item);
                 }

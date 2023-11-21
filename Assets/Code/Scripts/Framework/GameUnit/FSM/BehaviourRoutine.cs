@@ -119,12 +119,21 @@ namespace HorrorEscapeGame.Enemy
             {
                 if (hitEventTimer.IsAlarm())
                 {
-                    Debug.Log("Hit!!");
+                    if (unit.weapon != null)
+                    {
+                        var cols = Physics.OverlapSphere(unit.weapon.position, 0.25f);
+                        foreach (var col in cols)
+                        {
+                            if (col.TryGetComponent(out PlayerController player))
+                            {
+                                player.OnHit(20);
+                            }
+                        }
+                    }
                 }
-                if (!unit.IsCloserThanTarget(unit.attackDiatance) && attackEndTimer.IsAlarm())
+                bool isAttackEndAlarm = attackEndTimer.IsAlarm();
+                if (!unit.IsCloserThanTarget(unit.attackDiatance) && isAttackEndAlarm)
                 {
-
-                    Debug.Log("RUN!");
                     unit.ChangeState(typeof(BasicZombieRun));
                 }
             }

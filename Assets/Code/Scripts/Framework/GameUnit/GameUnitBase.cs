@@ -12,6 +12,7 @@ namespace HorrorEscapeGame
         public static Transform TraceTarget;
         public float detectDistance;
         public float attackDiatance;
+        public Transform weapon;
         public FiniteMachine FSM
         {
             get
