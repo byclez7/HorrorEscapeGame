@@ -4,17 +4,15 @@ using UnityEngine;
 
 namespace HorrorEscapeGame
 {
-    public class Bag : MonoBehaviour
+    [CreateAssetMenu(menuName = "HorrorEscapeGame/Inventory/Bag")]
+    public class Bag : ScriptableObject
     {
-        public List<IInteractableThing> items;
-
-        void Start()
-        {
-        
-        }
+        public MessagePresenter messagePresenter;
+        public List<IInteractableThing> items = new();
 
         public void AddItem(IInteractableThing thing)
         {
+            messagePresenter.Show("Good!");
             if (items.Exists(item => item == thing))
                 return;
 

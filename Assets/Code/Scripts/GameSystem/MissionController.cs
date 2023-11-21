@@ -6,16 +6,18 @@ namespace HorrorEscapeGame
 {
     public class MissionController : MonoBehaviour
     {
-        // Start is called before the first frame update
+        public List<StageMission> missions = new List<StageMission>();
+
         void Start()
         {
-        
+            DontDestroyOnLoad(gameObject);
         }
 
-        // Update is called once per frame
-        void Update()
+        public bool IsCompleteStage(int stage)
         {
-        
+            if (missions[stage].missionTargets.Count <= missions[stage].foundCount)
+                return true;
+            return false;
         }
     }
 
@@ -23,6 +25,7 @@ namespace HorrorEscapeGame
     public class StageMission
     {
         public string stageName;
-        public List<bool> missionPurposes = new();
+        public List<GameObject> missionTargets = new();
+        public int foundCount = 0;
     }
 }

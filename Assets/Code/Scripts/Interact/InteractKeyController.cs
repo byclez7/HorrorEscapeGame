@@ -23,7 +23,7 @@ namespace HorrorEscapeGame
 
         public void UpdateKeyInputEvent()
         {
-            if (Input.inputString.Length > 0)
+            if (Input.anyKeyDown)
                 InteractWithPressedKey();
         }
 

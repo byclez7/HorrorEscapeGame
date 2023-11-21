@@ -23,6 +23,10 @@ namespace HorrorEscapeGame
         {
             centerOfMinimap = new Vector2(minimapTransform.position.x, minimapTransform.position.y);
             centerOfRealmap = new Vector2(realmapTransform.position.x + realmapSqaureSize / 2f, realmapTransform.position.z + realmapSqaureSize / 2f);
+            for (int i = 0; i < targets.Count; i++)
+            {
+                DisplayTransform(targets[i], targetIcons[i]);
+            }
         }
 
         void Update()
