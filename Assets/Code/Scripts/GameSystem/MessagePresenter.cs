@@ -21,8 +21,9 @@ namespace HorrorEscapeGame
             isWorking = false;
         }
 
-        public void Show(string msg)
+        public void Show(string msg, float _time = 0)
         {
+            _time = _time == 0 ? timer : _time;
             if (clone == null)
             {
                 clone = Instantiate(this);
@@ -31,27 +32,31 @@ namespace HorrorEscapeGame
             if (!clone.isWorking)
             {
                 clone.message.text = msg;
-                clone.StartCoroutine(clone.FadeOut());
+                clone.StartCoroutine(clone.FadeOut(_time));
             }
         }
 
-        IEnumerator FadeOut()
+        public void Show(string msg)
+        {
+            Show(msg, 0);
+        }
+
+        IEnumerator FadeOut(float time)
         {
             isWorking = true;
 
-            var initTime = timer;
-            timer += offset;
-            while (timer > 0)
+            var initTime = time;
+            time += offset;
+            while (time > 0)
             {
-                timer -= Time.deltaTime;
-                var alpha = timer / initTime;
+                time -= Time.deltaTime;
+                var alpha = time / initTime;
                 message.color = new Color(message.color.r, message.color.g, message.color.b, alpha);
                 background.color = new Color(background.color.r, background.color.g, background.color.b, alpha);
                 yield return null;
             }
 
             isWorking = false;
-            timer = initTime;
         }
     }
 }

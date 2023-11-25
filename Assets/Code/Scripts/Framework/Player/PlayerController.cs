@@ -1,7 +1,9 @@
 using KinematicCharacterController.Examples;
+using Michsky.UI.Dark;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace HorrorEscapeGame
@@ -11,6 +13,7 @@ namespace HorrorEscapeGame
         public Slider hpSlider;
         public int HP;
         public Image hitScreen;
+        public ModalWindowManager modalWindowManager;
 
         private bool isHitEventInvoked = false;
         private float alpha;
@@ -24,7 +27,6 @@ namespace HorrorEscapeGame
         private void Start()
         {
             mainCam = Camera.main.GetComponent<ExampleCharacterCamera>();
-            Debug.Log(mainCam);
         }
 
         private void Update()
@@ -39,21 +41,6 @@ namespace HorrorEscapeGame
                 }
             }
         }
-
-        //IEnumerator CameraQuake()
-        //{
-        //    var originalPosition = mainCam.transform.position;
-        //    mainCam.enabled = false;
-        //    float timer = 0.75f;
-        //    while (timer > 0)
-        //    {
-        //        timer -= Time.deltaTime;
-        //        Camera.main.transform.position += Random.onUnitSphere * 0.02f;
-        //        yield return new WaitForSeconds(0.1f);
-        //    }
-        //    mainCam.transform.position = originalPosition;
-        //    mainCam.enabled = true;
-        //}
 
         IEnumerator CameraQuake()
         {
@@ -74,6 +61,26 @@ namespace HorrorEscapeGame
             alpha = 38 / 255f;
             isHitEventInvoked = true;
             StartCoroutine(CameraQuake());
+
+            if (HP <= 0)
+            {
+                FindAnyObjectByType<ExamplePlayer>().enabled = false;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0.0001f;
+                modalWindowManager.ModalWindowIn();
+            }
+        }
+
+        public void ReplayCurrentScene()
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void ReplayAtFirst()
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene("Stage1");
         }
     }
 }

@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace HorrorEscapeGame
 {
     public class MissionController : MonoBehaviour
     {
+        public string onMissionInstruct;
+        public TMP_Text missionGoalText;
+        public TMP_Text missionProgressText;
+        public MessagePresenter messagePresenter;
         public List<StageMission> missions = new List<StageMission>();
+        public AudioClip onMissionStartSound;
 
         void Start()
         {
-            DontDestroyOnLoad(gameObject);
+            StartCoroutine(OnStart());
+        }
+
+        IEnumerator OnStart()
+        {
+            yield return new WaitForSeconds(1);
+            messagePresenter.Show(onMissionInstruct, 5f);
+            SoundManager.PlayOneShotSFX(onMissionStartSound);
         }
 
         public bool IsCompleteStage(int stage)

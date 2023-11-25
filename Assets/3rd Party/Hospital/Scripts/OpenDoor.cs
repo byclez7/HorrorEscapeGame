@@ -46,7 +46,7 @@ public class OpenDoor : MonoBehaviour
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 
         }
-        if (Input.GetKeyDown(KeyCode.F) && enter)
+        if (Input.GetMouseButtonDown(0) && enter)
         {
             open = !open;
         }

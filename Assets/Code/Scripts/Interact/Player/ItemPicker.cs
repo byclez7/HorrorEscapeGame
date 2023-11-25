@@ -8,8 +8,7 @@ namespace HorrorEscapeGame
     {
         public Bag bag;
         public LayerMask pickLayer;
-        public UsableKeyCodeSO key;
-        public UsableKeyCodeSO usableKey => key;
+        public UsableKeyCodeSO usableKey => null;
 
         private Ray ray = new Ray();
         private RaycastHit hitInfo = new RaycastHit();

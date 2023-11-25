@@ -46,7 +46,7 @@ namespace HorrorEscapeGame.Enemy
 
             public override void OnExit(GameUnitBase unit)
             {
-                Debug.Log("Exit");
+
             }
 
             public override void OnUpdate(GameUnitBase unit)

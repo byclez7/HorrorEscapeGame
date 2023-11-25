@@ -13,6 +13,7 @@ namespace HorrorEscapeGame
 
         public void Initiate<T>(List<T> initialValues = null) where T : IInteractableThing
         {
+            allItems.Clear();
             allItems.AddRange((IEnumerable<IInteractableThing>)(initialValues ?? new()));
         }
 

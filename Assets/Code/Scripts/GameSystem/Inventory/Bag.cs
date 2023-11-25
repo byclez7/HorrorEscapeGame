@@ -15,7 +15,7 @@ namespace HorrorEscapeGame
         {
             if (items.Exists(item => item == thing))
                 return;
-            messagePresenter.Show(thing.name + " obtained!");
+            //messagePresenter.Show(thing.name + " obtained!");
             thing.OnPicking.Invoke();
             items.Add(thing);
         }

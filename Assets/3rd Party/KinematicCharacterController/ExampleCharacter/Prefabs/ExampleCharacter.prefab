@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 169125747}
   - component: {fileID: 169125748}
   - component: {fileID: 1287116092}
+  - component: {fileID: 5543871627221593284}
   m_Layer: 0
   m_Name: ExampleCharacter
   m_TagString: Player
@@ -326,13 +327,30 @@ MonoBehaviour:
   playerKeyController: {fileID: 11400000, guid: fb93d97079b286c4cb7f8feea048773f,
     type: 2}
   userInputs:
-  - purpose: 
+  - purpose: Pick Up
     key: {fileID: 11400000, guid: 5c8177a10de1cb54aa22d4e9d6ed7cad, type: 2}
     onEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 169125748}
           m_TargetAssemblyTypeName: HorrorEscapeGame.ItemPicker, Assembly-CSharp
+          m_MethodName: Use
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - purpose: Control Item
+    key: {fileID: 11400000, guid: 3d073b9fb3c7d904a922edf9c21c2382, type: 2}
+    onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5543871627221593284}
+          m_TargetAssemblyTypeName: HorrorEscapeGame.ItemController, Assembly-CSharp
           m_MethodName: Use
           m_Mode: 1
           m_Arguments:
@@ -359,7 +377,6 @@ MonoBehaviour:
   pickLayer:
     serializedVersion: 2
     m_Bits: 64
-  key: {fileID: 0}
 --- !u!135 &1287116092
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -373,6 +390,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.6
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &5543871627221593284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398904762131290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704d755f39d8a304ea0209d7c0b50bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1758411822872852
 GameObject:
   m_ObjectHideFlags: 0
