@@ -13,6 +13,7 @@ namespace HorrorEscapeGame
         public float detectDistance;
         public float attackDiatance;
         public Transform weapon;
+        public UnitSound unitSound;
         public FiniteMachine FSM
         {
             get

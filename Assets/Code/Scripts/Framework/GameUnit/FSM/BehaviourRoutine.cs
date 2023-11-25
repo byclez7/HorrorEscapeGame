@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace HorrorEscapeGame.Enemy
 {
@@ -59,12 +60,19 @@ namespace HorrorEscapeGame.Enemy
 
         public class BasicZombieRun : BehaviourRoutine
         {
+            private bool isFirstAwake = true;
+
             public BasicZombieRun(string clipName, GameUnitBase gameUnit) : base(clipName, gameUnit)
             {
             }
 
             public override void OnEnter(GameUnitBase unit)
             {
+                if (isFirstAwake)
+                {
+                    isFirstAwake = false;
+                    SoundManager.PlaySFX(unit.unitSound.awake);
+                }
                 unit.SetStateAnimation(GetClipHash());
                 unit.SetAgentMovementStop(false);
             }
@@ -119,9 +127,14 @@ namespace HorrorEscapeGame.Enemy
             {
                 if (hitEventTimer.IsAlarm())
                 {
+                    SoundManager.PlayOneShotSFX(unit.unitSound.attack);
+
                     if (unit.weapon != null)
                     {
-                        var cols = Physics.OverlapSphere(unit.weapon.position, 0.25f);
+                        //if (Vector3.Distance(unit.weapon.position, GameUnitBase.TraceTarget.position) < 0.5f)
+                        //    GameUnitBase.TraceTarget.GetComponent<PlayerController>().OnHit(20);
+                        //var cols = Physics.OverlapSphere(unit.weapon.position, 0.1f);
+                        var cols = Physics.OverlapSphere(unit.weapon.position, 0.8f);
                         foreach (var col in cols)
                         {
                             if (col.TryGetComponent(out PlayerController player))

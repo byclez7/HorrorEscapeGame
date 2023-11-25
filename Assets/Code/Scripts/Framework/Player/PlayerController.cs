@@ -1,3 +1,4 @@
+using KinematicCharacterController.Examples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,17 @@ namespace HorrorEscapeGame
 
         private bool isHitEventInvoked = false;
         private float alpha;
+        private ExampleCharacterCamera mainCam;
 
         void Awake()
         {
             GameUnitBase.TraceTarget = transform;
+        }
+
+        private void Start()
+        {
+            mainCam = Camera.main.GetComponent<ExampleCharacterCamera>();
+            Debug.Log(mainCam);
         }
 
         private void Update()
@@ -24,12 +32,39 @@ namespace HorrorEscapeGame
             if (isHitEventInvoked)
             {
                 hitScreen.color = new(hitScreen.color.r, hitScreen.color.g, hitScreen.color.b, alpha);
-                alpha -= Time.deltaTime / 3.4f;
+                alpha -= Time.deltaTime / 5f;
                 if (alpha < 0)
                 {
                     isHitEventInvoked = false;
                 }
             }
+        }
+
+        //IEnumerator CameraQuake()
+        //{
+        //    var originalPosition = mainCam.transform.position;
+        //    mainCam.enabled = false;
+        //    float timer = 0.75f;
+        //    while (timer > 0)
+        //    {
+        //        timer -= Time.deltaTime;
+        //        Camera.main.transform.position += Random.onUnitSphere * 0.02f;
+        //        yield return new WaitForSeconds(0.1f);
+        //    }
+        //    mainCam.transform.position = originalPosition;
+        //    mainCam.enabled = true;
+        //}
+
+        IEnumerator CameraQuake()
+        {
+            mainCam.OnQuake += Quake;
+            yield return new WaitForSeconds(1f);
+            mainCam.OnQuake -= Quake;
+        }
+
+        private Vector3 Quake(Vector3 pos)
+        {
+            return pos + Random.onUnitSphere * 0.05f;
         }
 
         public void OnHit(int damage)
@@ -38,28 +73,7 @@ namespace HorrorEscapeGame
             hpSlider.value = HP;
             alpha = 38 / 255f;
             isHitEventInvoked = true;
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.layer.Equals(LayerMask.NameToLayer("World Item")))
-            {
-                if (other.gameObject.TryGetComponent<Outline>(out Outline outline))
-                {
-                    outline.enabled = true;
-                }
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.gameObject.layer.Equals(LayerMask.NameToLayer("World Item")))
-            {
-                if (other.gameObject.TryGetComponent<Outline>(out Outline outline))
-                {
-                    outline.enabled = false;
-                }
-            }
+            StartCoroutine(CameraQuake());
         }
     }
 }

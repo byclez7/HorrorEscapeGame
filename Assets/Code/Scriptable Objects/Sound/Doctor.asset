@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903375e6573d9a842acf7873883e288c, type: 3}
+  m_Name: Doctor
+  m_EditorClassIdentifier: 
+  idle: {fileID: 0}
+  attack: {fileID: 8300000, guid: b22b1127d3e164b2cb569394a3ae0618, type: 3}
+  walk: {fileID: 0}
+  hit: {fileID: 0}
+  awake: {fileID: 8300000, guid: 02e7e5e0740304f518928dec2ecff207, type: 3}
+  dead: {fileID: 0}
+  run: {fileID: 0}

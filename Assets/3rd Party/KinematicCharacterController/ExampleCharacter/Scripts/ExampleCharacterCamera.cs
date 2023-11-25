@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace KinematicCharacterController.Examples
 {
@@ -11,6 +12,7 @@ namespace KinematicCharacterController.Examples
         public Camera Camera;
         public Vector2 FollowPointFraming = new Vector2(0f, 0f);
         public float FollowingSharpness = 10000f;
+        public Func<Vector3, Vector3> OnQuake = (a) => a;
 
         [Header("Distance")]
         public float DefaultDistance = 6f;
@@ -172,7 +174,7 @@ namespace KinematicCharacterController.Examples
                 targetPosition += Transform.up * FollowPointFraming.y;
 
                 // Apply position
-                Transform.position = targetPosition;
+                Transform.position = OnQuake(targetPosition);
             }
         }
     }
