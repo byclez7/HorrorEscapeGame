@@ -6,6 +6,7 @@ using System;
 
 namespace DEEnvironmentALP8310.Drawers
 {
+#if UNITY_EDITOR
     #region [DE_Constants]
     public static class DE_CONSTANTS
     {
@@ -1454,6 +1455,6 @@ namespace DEEnvironmentALP8310.Drawers
         }
     }
     #endregion [DE_DrawerSpace]
-
+#endif
 
 }

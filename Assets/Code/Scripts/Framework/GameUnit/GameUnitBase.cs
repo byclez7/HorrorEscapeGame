@@ -10,6 +10,7 @@ namespace HorrorEscapeGame
     public abstract class GameUnitBase : MonoBehaviour
     {
         public static Transform TraceTarget;
+        public int damage = 20;
         public float detectDistance;
         public float attackDiatance;
         public Transform weapon;

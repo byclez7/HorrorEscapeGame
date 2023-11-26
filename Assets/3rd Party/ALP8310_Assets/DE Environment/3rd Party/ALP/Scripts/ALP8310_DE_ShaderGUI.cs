@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using DEEnvironmentALP8310.Drawers;
-
+#if UNITY_EDITOR
 public class ALP8310_DE_ShaderGUI : ShaderGUI
 {
     bool showCategory = true;
@@ -3327,3 +3327,4 @@ public class ALP8310_DE_ShaderGUI : ShaderGUI
         #endregion [ADVANCED SETTINGS]
     }
 }
+#endif

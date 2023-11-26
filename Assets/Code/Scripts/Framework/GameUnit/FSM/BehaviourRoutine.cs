@@ -71,7 +71,7 @@ namespace HorrorEscapeGame.Enemy
                 if (isFirstAwake)
                 {
                     isFirstAwake = false;
-                    SoundManager.PlaySFX(unit.unitSound.awake);
+                    SoundManager.PlayOneShotSFX(unit.unitSound.awake);
                 }
                 unit.SetStateAnimation(GetClipHash());
                 unit.SetAgentMovementStop(false);
@@ -139,7 +139,7 @@ namespace HorrorEscapeGame.Enemy
                         {
                             if (col.TryGetComponent(out PlayerController player))
                             {
-                                player.OnHit(20);
+                                player.OnHit(unit.damage);
                             }
                         }
                     }

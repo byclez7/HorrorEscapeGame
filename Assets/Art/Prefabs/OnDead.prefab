@@ -1562,7 +1562,7 @@ GameObject:
   - component: {fileID: 6637785204741021210}
   - component: {fileID: 6637785204741021211}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: OnDead
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 530d80e02c13f6848b42f40d99730498, type: 3}
   m_NavMeshLayer: 0

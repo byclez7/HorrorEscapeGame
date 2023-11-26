@@ -29,20 +29,20 @@ public class OpenDoor : MonoBehaviour
     {
         if (open)
         {
-            if (AudioS == false)
-            {
-                gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
-                AudioS = true;
-            }
+            //if (AudioS == false)
+            //{
+            //    gameObject.GetComponent<AudioSource>().PlayOneShot(OpenAudio);
+            //    AudioS = true;
+            //}
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, openRot, Time.deltaTime * smooth);
         }
         else
         {
-            if (AudioS == true)
-            {
-                gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
-                AudioS = false;
-            }
+            //if (AudioS == true)
+            //{
+            //    gameObject.GetComponent<AudioSource>().PlayOneShot(CloseAudio);
+            //    AudioS = false;
+            //}
             transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, defaultRot, Time.deltaTime * smooth);
 
         }
